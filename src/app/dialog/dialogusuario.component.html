@@ -1,0 +1,33 @@
+<!--titulo-->
+<h1 mat-dialog-title>Nuevo Usuario</h1>
+<!--Contenido-->
+<div mat-dialog-content>
+<p>Contenido del Dialog</p>
+
+    <mat-label>Nombre</mat-label>
+    <!--bind a el input-->    
+    <input matInput [(ngModule)="nombre"] >    
+    
+    <mat-label>Apellido</mat-label>
+    <!--bind a el input-->    
+    <input matInput [(ngModule)="apellido"] >    
+    
+    
+    <mat-label>Email</mat-label>
+    <!--bind a el input-->    
+    <input matInput [(ngModule)="email"] >    
+    
+    
+    <mat-label>Tipo de Usuario</mat-label>
+    <!--bind a el input-->    
+    <input matInput [(ngModule)="tipoUsuario"] >    
+
+
+</div>
+<!--acciones-->
+<div mat-dialog-actions>
+<!--metodo del componente dialogusuario.component-->
+<button mat-raised-button color="danger" (click)="closeDialog()">Cancelar</button>
+<!--metodo del componente dialogusuario.component-->
+<button mat-raised-button color="primary" (click)="addUsuario()">Guardar</button>
+</div>
