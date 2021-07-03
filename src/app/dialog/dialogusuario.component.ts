@@ -4,6 +4,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Usuario } from "../models/usuario";
 import { ApiusuarioService } from "../services/apiusuario.service";
 
+
 @Component({
     templateUrl:'dialogusuario.component.html'
 })
@@ -15,10 +16,14 @@ export class DialogUsuarioComponent{
     public tipoUsuario!: number;
     public email!: string;
 
+    
+    
+
     constructor(
         public dialogRef:MatDialogRef<DialogUsuarioComponent>,
         public apiUsuario: ApiusuarioService,
-        public snackBar: MatSnackBar
+        public snackBar: MatSnackBar,
+        
     ){}
 
     //cerrar el dialog, sera llamado en btn usuario

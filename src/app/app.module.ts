@@ -15,6 +15,7 @@ import {MatInputModule} from '@angular/material/input';
 import { DialogUsuarioComponent } from './dialog/dialogusuario.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +34,13 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    DialogUsuarioComponent
+  ]
 })
 export class AppModule { }

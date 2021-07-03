@@ -13,7 +13,8 @@ export class UsuarioComponent implements OnInit {
   //variable para la lista que guarde el request
   public  lista: any []=[];
   //array para las columnas
-  public columnas:string []=['id','nombre'];//esto le dira a material que debe mostrar
+  //esto le dira a material que debe mostrar
+  public columnas:string []=['id','nombre','apellido','tipoUsuario'];
   constructor(
     //inyectamos el usuario
     private apiUsuario: ApiusuarioService,
@@ -39,7 +40,7 @@ export class UsuarioComponent implements OnInit {
   openAdd(){
     const dialogRef = this.dialog.open(DialogUsuarioComponent,{
       //config de estilo
-      width:'2000'
+      width:'300'
     });
     //metodo para refrescar despues de insertar data 
     dialogRef.afterClosed().subscribe(result =>{

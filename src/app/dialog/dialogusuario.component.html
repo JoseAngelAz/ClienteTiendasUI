@@ -2,32 +2,39 @@
 <h1 mat-dialog-title>Nuevo Usuario</h1>
 <!--Contenido-->
 <div mat-dialog-content>
-<p>Contenido del Dialog</p>
+  <p>Contenido del Dialog</p>
 
+  <mat-form-field>
     <mat-label>Nombre</mat-label>
-    <!--bind a el input-->    
-    <input matInput [(ngModule)="nombre"] >    
-    
+    <input matInput [(ngModel)]="nombre" />
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>Apellido</mat-label>
-    <!--bind a el input-->    
-    <input matInput [(ngModule)="apellido"] >    
-    
-    
+    <input matInput [(ngModel)]="apellido"/></mat-form-field
+  ><br />
+  <mat-form-field>
     <mat-label>Email</mat-label>
-    <!--bind a el input-->    
-    <input matInput [(ngModule)="email"] >    
-    
-    
+    <input matInput [(ngModel)]="email" type="email" />
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>Tipo de Usuario</mat-label>
-    <!--bind a el input-->    
-    <input matInput [(ngModule)="tipoUsuario"] >    
+    <input matInput [(ngModel)]="tipoUsuario" type="number" /><br />
+  </mat-form-field>
+  <!--boton toggle-->
 
-
+  <!--
+    <mat-label>Tipo de Usuario</mat-label>    
+    <input matInput type="number" [(ngModule)="tipoUsuario"] >    
+ -->
 </div>
 <!--acciones-->
 <div mat-dialog-actions>
-<!--metodo del componente dialogusuario.component-->
-<button mat-raised-button color="danger" (click)="closeDialog()">Cancelar</button>
-<!--metodo del componente dialogusuario.component-->
-<button mat-raised-button color="primary" (click)="addUsuario()">Guardar</button>
+  <!--metodo del componente dialogusuario.component-->
+  <button mat-raised-button color="danger" (click)="closeDialog()">
+    Cancelar
+  </button>
+  <!--metodo del componente dialogusuario.component-->
+  <button mat-raised-button color="primary" (click)="addUsuario()">
+    Guardar
+  </button>
 </div>
