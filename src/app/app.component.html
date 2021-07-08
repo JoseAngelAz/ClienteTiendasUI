@@ -1,10 +1,13 @@
 <mat-drawer-container>
-  <mat-drawer #drawer mode="side">
+  <mat-drawer color="warn" #drawer mode="side">
     <a [routerLink]="['/home']">Inicio</a> <br>
-    <a [routerLink]="['/usuario']">Usuario</a>
+    <a [routerLink]="['/usuario']">Usuario</a><br>
+    <a [routerLink]="['/tiendas']">Tiendas</a>
   </mat-drawer>
   <div>
-    <button (click)="drawer.toggle();">Menu</button>
+    <button #mimenu (click)="drawer.toggle();" mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>    
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>

@@ -1,31 +1,31 @@
 <!--titulo-->
-<h1 mat-dialog-title>Nuevo Usuario</h1>
+<h1 mat-dialog-title>{{usuario!=null?'Editar Usuario': 'Nuevo usuario'}}</h1>
 <!--Contenido-->
 <div mat-dialog-content>
-  <p>Contenido del Dialog</p>
+  <p>Componente Dialog Compartido</p>
 
   <mat-form-field>
     <mat-label>Nombre</mat-label>
     <input matInput [(ngModel)]="nombre" />
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Apellido</mat-label>
-    <input matInput [(ngModel)]="apellido"/></mat-form-field
+    <mat-label>password</mat-label>
+    <input matInput [(ngModel)]="password"/></mat-form-field
   ><br />
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput [(ngModel)]="email" type="email" />
   </mat-form-field>
+  <!--boton
   <mat-form-field>
     <mat-label>Tipo de Usuario</mat-label>
-    <input matInput [(ngModel)]="tipoUsuario" type="number" /><br />
+    <input matInput [(ngModel)]="rol" type="number" /><br />
   </mat-form-field>
-  <!--boton toggle-->
-
-  <!--
-    <mat-label>Tipo de Usuario</mat-label>    
-    <input matInput type="number" [(ngModule)="tipoUsuario"] >    
- -->
+   toggle-->
+  <mat-button-toggle-group [(ngModel)]="rol" name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="1">Administrador</mat-button-toggle>
+    <mat-button-toggle value="2">Normal</mat-button-toggle>    
+  </mat-button-toggle-group>
 </div>
 <!--acciones-->
 <div mat-dialog-actions>
@@ -34,7 +34,8 @@
     Cancelar
   </button>
   <!--metodo del componente dialogusuario.component-->
-  <button mat-raised-button color="primary" (click)="addUsuario()">
-    Guardar
+  <button mat-raised-button color="primary"
+   (click)="usuario != null ? editUsuario() : addUsuario()">
+   {{usuario!=null?'Editar': 'Guardar'}}
   </button>
 </div>

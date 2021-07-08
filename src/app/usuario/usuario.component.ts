@@ -4,6 +4,9 @@ import { Response } from '../models/reponse';
 //componente dialog creado por mi
 import { DialogUsuarioComponent } from '../dialog/dialogusuario.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Usuario } from '../models/usuario';
+import { DialogDeleteComponent } from '../common/delete/dialogdelete.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -14,12 +17,17 @@ export class UsuarioComponent implements OnInit {
   public  lista: any []=[];
   //array para las columnas
   //esto le dira a material que debe mostrar
-  public columnas:string []=['id','nombre','apellido','tipoUsuario'];
+  public columnas:string []=['id','nombre','apellido','tipoUsuario','email','acciones'];
+
+  //atributo para el ancho del modal
+  readonly width:string = '300px';
   constructor(
     //inyectamos el usuario
     private apiUsuario: ApiusuarioService,
     //dialog de angular material
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    //snackbar para mandar mensajes tipo toast
+    public snackBar:MatSnackBar
   ) { 
     
   }
@@ -40,7 +48,7 @@ export class UsuarioComponent implements OnInit {
   openAdd(){
     const dialogRef = this.dialog.open(DialogUsuarioComponent,{
       //config de estilo
-      width:'300'
+      width:this.width
     });
     //metodo para refrescar despues de insertar data 
     dialogRef.afterClosed().subscribe(result =>{
@@ -48,4 +56,45 @@ export class UsuarioComponent implements OnInit {
       this.GetUsuarios();
     });
   }
+  //Editar Usuario
+  openEdit(usuario: Usuario){
+    //ejecutamos el dialog
+    const dialogRef = this.dialog.open(DialogUsuarioComponent,{
+      //config de estilo
+      width:this.width,
+      //le mandamos al usuario
+      data: usuario
+    });
+    //metodo para refrescar despues de insertar data 
+    dialogRef.afterClosed().subscribe(result =>{
+      //le mandamos un dato al dialog
+      this.GetUsuarios();
+    });
+  }
+  //borrar usuario
+  delete(usuario:Usuario){
+    //ejecutamos el dialog
+    const dialogRef = this.dialog.open(DialogDeleteComponent,{
+      //config de estilo
+      width:this.width
+      //usuario lo vamos a necesitar en el delte de nuestra api      
+    });
+    //metodo para refrescar despues de insertar data 
+    dialogRef.afterClosed().subscribe(result =>{
+      //eliminar cancelar
+      if(result){
+        this.apiUsuario.DeleteUsuarioService(usuario.id).subscribe(response =>{
+          if(response.exito === 1){
+            //usamos snackbar del constructor
+            this.snackBar.open('Usuario Eliminado Exitosamente','',{
+              duration:2000
+            });
+            //actualizamos la vista jalando los usuarios
+            this.GetUsuarios();
+          }
+        });
+      }
+    });
+  }
+
 }

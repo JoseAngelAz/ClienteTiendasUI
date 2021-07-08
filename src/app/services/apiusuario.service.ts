@@ -18,7 +18,7 @@ const httpOption = {
 export class ApiusuarioService {
 
   //url a donde me conectare al servicio
-  url:string ='https://localhost:44300/api/usuarios';
+  url:string ='https://localhost:44378/api/Usuario';
   constructor(
     private _http:HttpClient
   ) { }
@@ -32,6 +32,16 @@ export class ApiusuarioService {
   //Ingresar Usuarios, pasar param usuario de la Interface usuario.ts
   AddUsuarios(usuario: Usuario):Observable<Response>{
     return this._http.post<Response>(this.url, usuario, httpOption);
+  }
+
+  //Editar Usuario
+  EditUsuarioService(usuario: Usuario):Observable<Response>{
+    return this._http.put<Response>(this.url, usuario, httpOption);
+  }
+
+  //Eliminar Usuario
+  DeleteUsuarioService(id:number):Observable<Response>{
+    return this._http.delete<Response>(`${this.url}/${id}`);
   }
 }
 

@@ -14,14 +14,21 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { DialogUsuarioComponent } from './dialog/dialogusuario.component';
 import { FormsModule } from '@angular/forms';
-
+import { DialogDeleteComponent } from './common/delete/dialogdelete.component';
+import { TiendaComponent } from './tienda/tienda.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'
+import { DialogTiendaComponent } from './dialog/dialogtienda.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UsuarioComponent,
-    DialogUsuarioComponent
+    DialogUsuarioComponent,
+    DialogDeleteComponent,
+    TiendaComponent,
+    DialogTiendaComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +42,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatSnackBarModule,
     FormsModule,
+    MatButtonToggleModule,
+    MatIconModule
     
   ],
   providers: [],
