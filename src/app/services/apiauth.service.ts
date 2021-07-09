@@ -16,8 +16,9 @@ const httpOption = {
     providedIn:'root'
 })
 export class ApiAuthService{    
-
-    url:string = 'https://localhost:44378/api/Auth/login';
+    //https://localhost:44378/api/Usuario/login
+    //url:string = 'https://localhost:44378/api/Auth/login';
+    url:string = 'https://localhost:44378/api/Usuario/login';
 
     private usuarioSubject: BehaviorSubject<UserToken>;
     public get usuarioData(): UserToken{
