@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-title>Inicio de Sesion</mat-card-title>
+    <mat-card-content>
+        <p>
+            <mat-form-field>
+                <input placeholder="Email" matInput type="text" [(ngModel)]="email">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+                <input placeholder="Password" matInput type="password" [(ngModel)]="password">
+            </mat-form-field>
+        </p>        
+        <button mat-raised-button (click)="login()" mat-button color="primary">LOGIN</button>    
+    </mat-card-content>    
+</mat-card>

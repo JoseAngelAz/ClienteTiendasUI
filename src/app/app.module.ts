@@ -19,6 +19,8 @@ import { TiendaComponent } from './tienda/tienda.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import { DialogTiendaComponent } from './dialog/dialogtienda.component';
 import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     DialogUsuarioComponent,
     DialogDeleteComponent,
     TiendaComponent,
-    DialogTiendaComponent
+    DialogTiendaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSnackBarModule,
     FormsModule,
     MatButtonToggleModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
     
   ],
   providers: [],
