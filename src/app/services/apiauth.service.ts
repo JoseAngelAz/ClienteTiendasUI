@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { Response } from "../models/reponse";
 import { UserToken } from "../models/token";
 import {map} from 'rxjs/operators';
-
+// del min 1 al 15 del video
 //config para encabezados y propiedades de http options
 const httpOption = {
     headers: new HttpHeaders({
@@ -18,10 +18,13 @@ const httpOption = {
 export class ApiAuthService{    
     //https://localhost:44378/api/Usuario/login
     //url:string = 'https://localhost:44378/api/Auth/login';
-    url:string = 'https://localhost:44378/api/Usuario/login';
+    url:string = 'https://localhost:44378/api/Auth/login';
 
-    private usuarioSubject: BehaviorSubject<UserToken>;
-    public get usuarioData(): UserToken{
+    //Recibe un elemento desde su cracion cn Behavior
+    //representado con el UserToken interface
+    private usuarioSubject: BehaviorSubject<UserToken>
+
+    public get usuarioData(): UserToken{//esto era UserToken
     return this.usuarioSubject.value;
     }
 
@@ -38,7 +41,7 @@ export class ApiAuthService{
               localStorage.setItem('usuario',JSON.stringify(usuario));
               this.usuarioSubject.next(usuario);
             }
-            return res
+            return res //antes era res
           })
         );
     }

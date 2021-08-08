@@ -1,9 +1,12 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { catchError } from "rxjs/operators";
 import { ApiAuthService } from "../services/apiauth.service";
 
-@Injectable()
+@Injectable({
+    providedIn:'root'
+})
 export class JwtInterceptor implements HttpInterceptor{
 
     constructor(private apiAuthService:ApiAuthService){}
@@ -13,13 +16,20 @@ export class JwtInterceptor implements HttpInterceptor{
         const usuario = this.apiAuthService.usuarioData;
         //verificamos si existe el usuario, debe tener una sesion
         //y le mandamos el token
-        if(usuario){
-            request = request.clone({
-                setHeaders:{
-                    Authorization: `Bearer ${usuario.token}`
-                }
-            })
-        }
+        try{
+            if(usuario){//era usuario
+                //mapear token del user
+                var tokensio = usuario.token;
+                
+                request = request.clone({
+    
+                    headers:request.headers.set("Authorization", "Bearer " + tokensio)
+                   /*  setHeaders:{    //se esta saltando setear el header
+                        Authorization: `Bearer ${usuario.token}`
+                    } */
+                })
+            }
+        } catch(error){console.log(error)}
         return next.handle(request);
     }
 }
